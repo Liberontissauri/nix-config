@@ -39,10 +39,23 @@
         specialArgs = {inherit inputs outputs;};
         # > Our main nixos configuration file <
         modules = [
-          impermanence.nixosModules.impermanence
           disko.nixosModules.default
-          (import ./nixos/disko.nix { device = "/dev/sdc"; })
+          (import ./nixos/disko.nix { device = "/dev/sda"; })
+          impermanence.nixosModules.impermanence
           ./nixos/configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useUserPackages = true;
+            home-manager.users.liberontissauri.imports = [
+              stylix.homeManagerModules.stylix
+              ./home-manager/home.nix
+            ];
+            home-manager.extraSpecialArgs = {inherit inputs;};
+            home-manager.backupFileExtension = "bk";
+
+            # Optionally, use home-manager.extraSpecialArgs to pass
+            # arguments to home.nix
+          }
         ];
       };
     };

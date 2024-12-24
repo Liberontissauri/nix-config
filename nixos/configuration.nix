@@ -18,6 +18,7 @@
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
+    ./persistence.nix
   ];
 
   boot.loader.systemd-boot.enable = true;
@@ -51,6 +52,8 @@
   environment.systemPackages = with pkgs; [
     wayland
     killall
+    fd
+    btop
   ];
 
   programs.hyprland.enable = true;

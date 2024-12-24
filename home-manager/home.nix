@@ -61,10 +61,10 @@
   # home.packages = with pkgs; [ steam ];
   home.packages = with pkgs; [
     wget
-    vscode.fhs
     swaybg
     waybar
     discord-canary
+    bitwarden-desktop
   ];
   # Enable home-manager and git
   programs.alacritty.enable = true;
