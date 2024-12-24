@@ -48,6 +48,7 @@
             home-manager.useUserPackages = true;
             home-manager.users.liberontissauri.imports = [
               stylix.homeManagerModules.stylix
+              impermanence.homeManagerModules.impermanence
               ./home-manager/home.nix
             ];
             home-manager.extraSpecialArgs = {inherit inputs;};

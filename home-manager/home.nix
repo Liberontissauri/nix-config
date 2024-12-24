@@ -20,6 +20,7 @@
     ./features/background
     ./themes/blue-sky.nix
     ./features/firefox.nix
+    ./features/persistence.nix
   ];
 
 
