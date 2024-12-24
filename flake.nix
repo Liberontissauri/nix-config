@@ -1,0 +1,65 @@
+{
+  description = "Your new nix config";
+
+  inputs = {
+    # Nixpkgs
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Home manager
+    home-manager.url = "github:nix-community/home-manager/release-24.11";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    stylix.url = "github:danth/stylix";
+
+    impermanence.url = "github:nix-community/impermanence";
+
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
+
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    stylix,
+    impermanence,
+    disko,
+    ...
+  } @ inputs: let
+    inherit (self) outputs;
+  in {
+    nixosConfigurations = {
+      lib-desktop = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        # > Our main nixos configuration file <
+        modules = [
+          impermanence.nixosModules.impermanence
+          disko.nixosModules.default
+          (import ./nixos/disko.nix { device = "/dev/sdc"; })
+          ./nixos/configuration.nix
+        ];
+      };
+    };
+
+    # Standalone home-manager configuration entrypoint
+    # Available through 'home-manager --flake .#your-username@your-hostname'
+    homeConfigurations = {
+      home-manager.backupFileExtension = "bk";
+      "liberontissauri@lib-desktop" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+        extraSpecialArgs = {inherit inputs outputs;};
+        # > Our main home-manager configuration file <
+        modules = [
+          stylix.homeManagerModules.stylix
+          ./home-manager/home.nix
+        ];
+      };
+    };
+  };
+}

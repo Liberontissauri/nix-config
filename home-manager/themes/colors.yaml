@@ -1,0 +1,18 @@
+scheme: "Default"
+author: "Liberontissauri"
+base00: "000310" #  ----
+base01: "00041d" #  ---
+base02: "07183b" #  --
+base03: "012b50" #  -
+base04: "025984" #  +
+base05: "3f9bc2" #  ++
+base06: "87d2ef" #  +++
+base07: "f9f9fb" #  ++++
+base08: "c0464f" #  red
+base09: "dc9656" #  orange
+base0A: "f7ca88" #  yellow
+base0B: "a1b56c" #  green
+base0C: "86c1b9" #  aqua
+base0D: "7cafc2" #  blue
+base0E: "ba8baf" #  purple
+base0F: "a16946" #  brown
