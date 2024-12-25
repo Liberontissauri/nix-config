@@ -21,6 +21,7 @@
     ./themes/blue-sky.nix
     ./features/firefox.nix
     ./features/persistence.nix
+    ./features/keyring.nix
   ];
 
 
