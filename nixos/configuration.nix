@@ -19,10 +19,14 @@
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
     ./persistence.nix
+    ./sddm.nix
+    ./virtualization.nix
   ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  programs.fuse.userAllowOther = true;
 
   boot.initrd.postDeviceCommands = lib.mkAfter ''
     mkdir /btrfs_tmp
@@ -56,6 +60,14 @@
     btop
   ];
 
+  # Virtualization
+  boot.kernelParams = [ "intel_iommu=on" ];
+  # /End/ Virtualization
+
+  services.gnome.gnome-keyring.enable = true;
+  environment.variables.XDG_RUNTIME_DIR = "/run/user/$UID";
+  programs.seahorse.enable = true;
+
   programs.hyprland.enable = true;
   programs.fish.enable = true;
 
@@ -71,6 +83,7 @@
 
   nixpkgs = {
     overlays = [
+      inputs.sddm-sugar-candy-nix.overlays.default
     ];
     config = {
       allowUnfree = true;
