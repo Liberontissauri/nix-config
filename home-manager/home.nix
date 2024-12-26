@@ -21,7 +21,7 @@
     ./themes/blue-sky.nix
     ./features/firefox.nix
     ./features/persistence.nix
-    ./features/keyring.nix
+    ./features/fastfetch.nix
   ];
 
 
@@ -67,6 +67,8 @@
     waybar
     discord-canary
     bitwarden-desktop
+    obsidian
+    deluge
   ];
   # Enable home-manager and git
   programs.alacritty.enable = true;
