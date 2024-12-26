@@ -69,6 +69,7 @@
     bitwarden-desktop
     obsidian
     deluge
+    nerdfetch
   ];
   # Enable home-manager and git
   programs.alacritty.enable = true;
