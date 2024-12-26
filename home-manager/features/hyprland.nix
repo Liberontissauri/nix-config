@@ -100,6 +100,7 @@ in {
       bind = $mainMod, E, exec, $fileManager
       bind = $mainMod, Space, exec, wofi --show drun,
       bind = $mainMod, F, togglefloating,
+      bind = $mainMod SHIFT, F,fullscreen 
       bind = $mainMod, P, pseudo, # dwindle
       bind = $mainMod, J, togglesplit, # dwindle
 
