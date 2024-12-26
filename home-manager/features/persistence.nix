@@ -1,5 +1,5 @@
 {
-  home.persistence."/persistent/home/liberontissauri" = {
+  home.persistence."/persist/home/liberontissauri" = {
     directories = [
       "Downloads"
       "Music"
@@ -16,6 +16,14 @@
         directory = ".local/share/Steam";
         method = "symlink";
       }
+      # [ PROGRAMS ]
+      ".config/Bitwarden"
+      ".mozilla/firefox" # want to make this more narrowed down in the future
+      ".vscode" # Also want to make this more narrow
+      ".config/Code" # maybe it was this
+      ".config/discordcanary"
+      ".config/obsidian"
+
     ];
     files = [
       ".screenrc"
