@@ -17,6 +17,7 @@
       size = 14;
     };
     window = {
+      dynamic_padding = true;
       padding = {
       x = 25;
       y = 25;
