@@ -22,6 +22,7 @@
     ./features/firefox.nix
     ./features/persistence.nix
     ./features/fastfetch.nix
+    ./features/helper.nix
   ];
 
 
@@ -70,6 +71,7 @@
     obsidian
     deluge
     nerdfetch
+    swi-prolog
   ];
   # Enable home-manager and git
   programs.alacritty.enable = true;
