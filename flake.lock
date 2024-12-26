@@ -73,11 +73,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1734701201,
-        "narHash": "sha256-hk0roBX10j/hospoWIJIJj3i2skd7Oml6yKQBx7mTFk=",
+        "lastModified": 1735048446,
+        "narHash": "sha256-Tc35Y8H+krA6rZeOIczsaGAtobSSBPqR32AfNTeHDRc=",
         "owner": "nix-community",
         "repo": "disko",
-        "rev": "2ee76c861af3b895b3b104bae04777b61397485b",
+        "rev": "3a4de9fa3a78ba7b7170dda6bd8b4cdab87c0b21",
         "type": "github"
       },
       "original": {
@@ -95,11 +95,11 @@
       },
       "locked": {
         "dir": "pkgs/firefox-addons",
-        "lastModified": 1734993788,
-        "narHash": "sha256-oztI4IFMb4brPIX7CnuNw8Lk7zHI/QACOPY9Tej37cg=",
+        "lastModified": 1735054826,
+        "narHash": "sha256-n1x41VFZFeG144KS1tu7R2qpXlS3kk7iguGO8B1uIuE=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "58e7daab16c1118db015d44670ee1019e48dbf24",
+        "rev": "d558686ba23132b3e98329952023d31bb5f7289c",
         "type": "gitlab"
       },
       "original": {
@@ -290,7 +290,28 @@
         "home-manager": "home-manager",
         "impermanence": "impermanence",
         "nixpkgs": "nixpkgs",
+        "sddm-sugar-candy-nix": "sddm-sugar-candy-nix",
         "stylix": "stylix"
+      }
+    },
+    "sddm-sugar-candy-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1733234385,
+        "narHash": "sha256-mY4SRvZipWIdX1eY6abP60i5h/MZkI1ZTGDO57d+p+o=",
+        "owner": "Zhaith-Izaliel",
+        "repo": "sddm-sugar-candy-nix",
+        "rev": "3c3800015ede18b268d1505cfc1488a24103d38a",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "Zhaith-Izaliel",
+        "repo": "sddm-sugar-candy-nix",
+        "type": "gitlab"
       }
     },
     "stylix": {

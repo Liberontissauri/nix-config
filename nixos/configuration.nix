@@ -58,6 +58,7 @@
     killall
     fd
     btop
+    #pkgs.linuxKernel.packages.linux_zen.vendor-reset # AMD Reset bug
   ];
 
   # Virtualization

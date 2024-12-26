@@ -21,6 +21,12 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    sddm-sugar-candy-nix = {
+      url = "gitlab:Zhaith-Izaliel/sddm-sugar-candy-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs = {
@@ -30,6 +36,7 @@
     stylix,
     impermanence,
     disko,
+    sddm-sugar-candy-nix,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -42,6 +49,7 @@
           disko.nixosModules.default
           (import ./nixos/disko.nix { device = "/dev/sda"; })
           impermanence.nixosModules.impermanence
+          sddm-sugar-candy-nix.nixosModules.default
           ./nixos/configuration.nix
           home-manager.nixosModules.home-manager
           {
