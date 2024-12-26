@@ -5,7 +5,7 @@ let
   # Change this to match your system's CPU.
   platform = "intel";
   # Change this to specify the IOMMU ids you wrote down earlier.
-  vfioIds = [ "1002:73ff" "1002:ab28" ];
+  vfioIds = [ "1002:731f" "1002:ab38" "10ec:5765"];
 in {
   # Configure kernel options to make sure IOMMU & KVM support is on.
   boot = {
@@ -13,6 +13,7 @@ in {
     kernelParams = [ "${platform}_iommu=on" "${platform}_iommu=pt" "kvm.ignore_msrs=1" ];
     extraModprobeConfig = "options vfio-pci ids=${builtins.concatStringsSep "," vfioIds}";
   };
+
 
   # Add a file for looking-glass to use later. This will allow for viewing the guest VM's screen in a
   # performant way.
@@ -41,11 +42,11 @@ in {
 
        qemu = {
          package = pkgs.qemu_kvm;
-         ovmf = enabled;
-         verbatimConfig = ''
-            namespaces = []
-           user = "+${builtins.toString config.users.users.${user}.uid}"
-         '';
+         ovmf.enable = true;
+         #verbatimConfig = ''
+         #   namespaces = []
+         #  user = "+${builtins.toString config.users.users.${user}.uid}"
+         #'';
        };
     };
   };
