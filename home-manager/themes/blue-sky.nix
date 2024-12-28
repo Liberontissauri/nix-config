@@ -1,8 +1,4 @@
-{
-
-  ...
-}:
-{
+{...}: {
   imports = [
     ../features/alacritty.nix
     ../features/fish.nix

@@ -1,10 +1,7 @@
-{
-  ...
-}:
-{
+{...}: {
   environment.etc.machine-id.text = "2137d962e10e445e8038329cb990137a";
   environment.persistence."/persist" = {
-    enable = true; 
+    enable = true;
     hideMounts = true;
     directories = [
       "/var/log"
@@ -13,30 +10,5 @@
       "/var/lib/systemd/coredump"
       "/var/lib/libvirt"
     ];
-    files = [
-      #"/etc/machine-id"
-      #{ file = "/var/keys/secret_file"; parentDirectory = { mode = "u=rwx,g=,o="; }; }
-    ];
-    #users.liberontissauri = {
-    #  directories = [
-    #    "Downloads"
-    #    "Music"
-    #    "Pictures"
-    #    "Documents"
-    #    "Videos"
-    #    "VirtualBox VMs"
-    #    { directory = ".gnupg"; mode = "0700"; }
-    #    { directory = ".ssh"; mode = "0700"; }
-    #    { directory = ".nixops"; mode = "0700"; }
-    #    { directory = ".local/share/keyrings"; mode = "0700"; }
-    #    ".local/share/direnv"
-         # Programs
-    #    ".config/Bitwarden"
-    #    ".mozilla/firefox" # want to make this more narrowed down in the future
-    #  ];
-    #  files = [
-    #    ".screenrc"
-    #  ];
-    #};
   };
 }

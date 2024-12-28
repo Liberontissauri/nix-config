@@ -1,14 +1,10 @@
-{
-  lib,
-  ...
-}:
-let 
+{lib, ...}: let
   active_border_color = "D4618300";
   inactive_border_color = "ffffff00";
   floating_border_color = "013861aa";
 in {
   wayland.windowManager.hyprland = {
-    enable=true;
+    enable = true;
     extraConfig = ''
       env = AQ_DRM_DEVICES,/dev/dri/card1
 
@@ -53,7 +49,7 @@ in {
               enabled = true
               size = 3
               passes = 1
-              
+
               vibrancy = 0.1696
           }
           shadow {
@@ -100,7 +96,7 @@ in {
       bind = $mainMod, E, exec, $fileManager
       bind = $mainMod, Space, exec, wofi --show drun,
       bind = $mainMod, F, togglefloating,
-      bind = $mainMod SHIFT, F,fullscreen 
+      bind = $mainMod SHIFT, F,fullscreen
       bind = $mainMod, P, pseudo, # dwindle
       bind = $mainMod, J, togglesplit, # dwindle
 

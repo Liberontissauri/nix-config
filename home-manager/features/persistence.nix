@@ -25,7 +25,6 @@
       ".config/obsidian"
       ".config/stremio"
       ".config/tidal-hifi"
-
     ];
     files = [
       ".screenrc"

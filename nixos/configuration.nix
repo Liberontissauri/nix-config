@@ -56,8 +56,8 @@
   boot.extraModulePackages = [
     pkgs.linuxPackages.vendor-reset
   ];
-  boot.supportedFilesystems = [ "ntfs" ];
-  
+  boot.supportedFilesystems = ["ntfs"];
+
   environment.systemPackages = with pkgs; [
     wayland
     killall
@@ -67,7 +67,7 @@
   ];
 
   # Virtualization
-  boot.kernelParams = [ "intel_iommu=on" ];
+  boot.kernelParams = ["intel_iommu=on"];
   # /End/ Virtualization
 
   services.gnome.gnome-keyring.enable = true;
@@ -87,7 +87,6 @@
     jack.enable = true;
   };
 
-
   nixpkgs = {
     overlays = [
       inputs.sddm-sugar-candy-nix.overlays.default
@@ -96,9 +95,9 @@
       allowUnfree = true;
     };
   };
-  
+
   nix.settings.experimental-features = "nix-command flakes";
-  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+  nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
 
   #nix = let
   #  flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
@@ -111,7 +110,7 @@
   #    # Workaround for https://github.com/NixOS/nix/issues/9574
   #    nix-path = config.nix.nixPath;
   #  };
-    # Opinionated: disable channels
+  # Opinionated: disable channels
   #  channel.enable = false;
 
   #  # Opinionated: make flake registry and nix path match flake inputs

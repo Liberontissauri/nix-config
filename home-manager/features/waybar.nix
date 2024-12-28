@@ -2,28 +2,26 @@
   lib,
   pkgs,
   ...
-}:
-let
+}: let
   bar_color = "00041D";
   text_color = "F9F9FB";
   selected_workspace = "87D2EF";
-in 
-{
+in {
   programs.waybar.enable = true;
   programs.waybar.settings = {
     mainBar = {
       layer = "top";
       position = "bottom";
 
-      modules-left = [ "clock" "hyprland/workspaces" ];
-      modules-center = [  ];
-      modules-right = [  ];
-      
+      modules-left = ["clock" "hyprland/workspaces"];
+      modules-center = [];
+      modules-right = [];
+
       "hyprland/workspaces" = {
         format = "{icon}";
         format-icons = {
-            default = "";
-            active = "";
+          default = "";
+          active = "";
         };
       };
 
@@ -37,7 +35,6 @@ in
       };
     };
   };
-
 
   programs.waybar.style = ''
     * {

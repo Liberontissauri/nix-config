@@ -30,7 +30,6 @@
     nvim-config = {
       url = "github:Liberontissauri/nix-nvim-config";
     };
-
   };
 
   outputs = {
@@ -52,7 +51,7 @@
         # > Our main nixos configuration file <
         modules = [
           disko.nixosModules.default
-          (import ./nixos/disko.nix { device = "/dev/sda"; })
+          (import ./nixos/disko.nix {device = "/dev/sda";})
           impermanence.nixosModules.impermanence
           sddm-sugar-candy-nix.nixosModules.default
           ./nixos/configuration.nix

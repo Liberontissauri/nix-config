@@ -1,16 +1,12 @@
-{
-  config,
-  ...
-}:
-{
+{config, ...}: {
   programs.wofi = {
     enable = true;
     settings = {
       location = "center";
       width = 800;
-      hide_scroll=true;
-      normal_window=true;
-      no_actions=true;
+      hide_scroll = true;
+      normal_window = true;
+      no_actions = true;
     };
     style = ''
       window {

@@ -26,8 +26,6 @@
     ./features/nvim.nix
   ];
 
-
-
   #home.file."${config.xdg.configHome}" = {
   #  source = ./dotfiles/vaporwave-1;
   #  recursive = true;
