@@ -63,6 +63,7 @@
     fd
     btop
     gparted
+    nix-doc
   ];
 
   # Virtualization
@@ -96,7 +97,10 @@
   };
 
   nix.settings.experimental-features = "nix-command flakes";
-  nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
+  nix.registry.nixpkgs.flake = inputs.nixpkgs;
+  nix.channel.enable = false;
+  environment.etc."nix/inputs/nixpkgs".source = "${inputs.nixpkgs}";
+  nix.settings.nix-path = lib.mkForce "nixpkgs=${inputs.nixpkgs}";
 
   #nix = let
   #  flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;

@@ -1,9 +1,9 @@
 {...}: {
   imports = [
-    ../features/alacritty.nix
-    ../features/fish.nix
-    ../features/wofi.nix
-    ../features/code.nix
+    ../alacritty.nix
+    ../fish.nix
+    ../wofi.nix
+    ../code.nix
   ];
   stylix.enable = true;
   stylix.image = ./background.jpg;

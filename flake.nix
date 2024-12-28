@@ -35,56 +35,13 @@
   outputs = {
     self,
     nixpkgs,
-    home-manager,
-    stylix,
-    impermanence,
-    disko,
-    sddm-sugar-candy-nix,
-    nvim-config,
     ...
   } @ inputs: let
     inherit (self) outputs;
   in {
     nixosConfigurations = {
-      lib-desktop = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
-        # > Our main nixos configuration file <
-        modules = [
-          disko.nixosModules.default
-          (import ./nixos/disko.nix {device = "/dev/sda";})
-          impermanence.nixosModules.impermanence
-          sddm-sugar-candy-nix.nixosModules.default
-          ./nixos/configuration.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useUserPackages = true;
-            home-manager.users.liberontissauri.imports = [
-              stylix.homeManagerModules.stylix
-              impermanence.homeManagerModules.impermanence
-              ./home-manager/home.nix
-            ];
-            home-manager.extraSpecialArgs = {inherit inputs;};
-            home-manager.backupFileExtension = "bk";
-
-            # Optionally, use home-manager.extraSpecialArgs to pass
-            # arguments to home.nix
-          }
-        ];
-      };
-    };
-
-    # Standalone home-manager configuration entrypoint
-    # Available through 'home-manager --flake .#your-username@your-hostname'
-    homeConfigurations = {
-      home-manager.backupFileExtension = "bk";
-      "liberontissauri@lib-desktop" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit inputs outputs;};
-        # > Our main home-manager configuration file <
-        modules = [
-          stylix.homeManagerModules.stylix
-          ./home-manager/home.nix
-        ];
+      "athena" = import ./hosts/athena/default.nix {
+        inherit nixpkgs inputs outputs;
       };
     };
   };
