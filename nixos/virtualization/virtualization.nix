@@ -7,7 +7,7 @@ let
   vfioIds = [ ];
 in {
   imports = [
-    ./virtualization/gaming_vm.nix
+    ./gaming_vm.nix
   ];
 
 
@@ -17,16 +17,16 @@ in {
     extraModprobeConfig = "options vfio-pci ids=${builtins.concatStringsSep "," vfioIds}";
   };
 
-  environment.file."/etc/libvirt/hooks/qemu".text = ''
+  environment.etc."libvirt/hooks/qemu".text = ''
       #!/bin/bash
 
       set -e
 
-      SCRIPT="./${1}-${2}-${3}"
+      SCRIPT="./$1-$2-$3"
       if [ -f "$SCRIPT" ]; then
           . "$SCRIPT"
       fi
-'' # Separe as {vm}-start-begin and {vm}-start-end (...) scripts
+  ''; # Separe as {vm}-start-begin and {vm}-start-end (...) scripts
 
   environment.systemPackages = with pkgs; [
       virt-manager

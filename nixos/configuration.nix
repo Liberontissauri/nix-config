@@ -20,7 +20,7 @@
     ./hardware-configuration.nix
     ./persistence.nix
     ./sddm.nix
-    ./virtualization.nix
+    ./virtualization/virtualization.nix
   ];
 
   boot.loader.systemd-boot.enable = true;
@@ -52,13 +52,18 @@
     btrfs subvolume create /btrfs_tmp/root
     umount /btrfs_tmp
   '';
+
+  boot.extraModulePackages = [
+    pkgs.linuxPackages.vendor-reset
+  ];
+  boot.supportedFilesystems = [ "ntfs" ];
   
   environment.systemPackages = with pkgs; [
     wayland
     killall
     fd
     btop
-    #pkgs.linuxKernel.packages.linux_zen.vendor-reset # AMD Reset bug
+    gparted
   ];
 
   # Virtualization
@@ -68,6 +73,7 @@
   services.gnome.gnome-keyring.enable = true;
   environment.variables.XDG_RUNTIME_DIR = "/run/user/$UID";
   programs.seahorse.enable = true;
+  security.polkit.enable = true;
 
   programs.hyprland.enable = true;
   programs.fish.enable = true;
@@ -90,25 +96,28 @@
       allowUnfree = true;
     };
   };
+  
+  nix.settings.experimental-features = "nix-command flakes";
+  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
-  nix = let
-    flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
-  in {
-    settings = {
-      # Enable flakes and new 'nix' command
-      experimental-features = "nix-command flakes";
-      # Opinionated: disable global registry
-      flake-registry = "";
-      # Workaround for https://github.com/NixOS/nix/issues/9574
-      nix-path = config.nix.nixPath;
-    };
+  #nix = let
+  #  flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
+  #in {
+  #  settings = {
+  #    # Enable flakes and new 'nix' command
+  #    experimental-features = "nix-command flakes";
+  #    # Opinionated: disable global registry
+  #    flake-registry = "";
+  #    # Workaround for https://github.com/NixOS/nix/issues/9574
+  #    nix-path = config.nix.nixPath;
+  #  };
     # Opinionated: disable channels
-    channel.enable = false;
+  #  channel.enable = false;
 
-    # Opinionated: make flake registry and nix path match flake inputs
-    registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
-    nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
-  };
+  #  # Opinionated: make flake registry and nix path match flake inputs
+  #  registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
+  #  nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
+  #};
 
   fonts.fontDir.enable = true;
 

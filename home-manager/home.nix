@@ -23,6 +23,7 @@
     ./features/persistence.nix
     ./features/fastfetch.nix
     ./features/helper.nix
+    ./features/nvim.nix
   ];
 
 
@@ -72,6 +73,12 @@
     deluge
     nerdfetch
     swi-prolog
+    grim
+    wl-clipboard
+    slurp
+    stremio
+    vlc
+    tidal-hifi
   ];
   # Enable home-manager and git
   programs.alacritty.enable = true;

@@ -27,6 +27,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nvim-config = {
+      url = "github:Liberontissauri/nix-nvim-config";
+    };
+
   };
 
   outputs = {
@@ -37,6 +41,7 @@
     impermanence,
     disko,
     sddm-sugar-candy-nix,
+    nvim-config,
     ...
   } @ inputs: let
     inherit (self) outputs;

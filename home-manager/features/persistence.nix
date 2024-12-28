@@ -23,6 +23,8 @@
       ".config/Code" # maybe it was this
       ".config/discordcanary"
       ".config/obsidian"
+      ".config/stremio"
+      ".config/tidal-hifi"
 
     ];
     files = [
