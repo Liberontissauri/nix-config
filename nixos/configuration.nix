@@ -3,7 +3,6 @@
 {
   inputs,
   lib,
-  config,
   pkgs,
   ...
 }: {
@@ -22,7 +21,7 @@
     ./sddm.nix
     ./virtualization/virtualization.nix
   ];
-
+  
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 

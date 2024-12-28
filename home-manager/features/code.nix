@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   ...
 }:
@@ -26,8 +25,8 @@
               "expr" = "(builtins.getFlake \"/persist/nix-config/flake.nix\").nixosConfigurations.lib-desktop.options";
             };
             #"home_manager" = {
-            #  "expr" = "(builtins.getFlake \"/PATH/TO/FLAKE\").homeConfigurations.CONFIGNAME.options"
-            #},
+            #  "expr" = "(builtins.getFlake \"/persist/nix-config/home-manager/home.nix\").homeConfigurations.lib-desktop.options";
+            #};
          };
       };
     };
