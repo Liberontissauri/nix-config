@@ -3,6 +3,7 @@
 {
   imports = [
     ../../modules/nixos/default.nix
+    ./hardware-configuration.nix
   ];
 
   config.mine.disko.enable = true;
@@ -15,79 +16,81 @@
     "0000:04:00.0" # NVME_1
     "0000:05:00.0" # NVME_2 (Windows OS)
   ];
-  config.mine.virtualization.id_driver_map = {
-    "1002 73ff" = "amdgpu"; # GPU_VIDEO
-    "1002 ab28" = "snd_hda_intel"; # GPU_AUDIO
-    "10ec 5765" = "nvme"; # NVME_1
-    "1e0f 0008" = "nvme"; # NVME_2
-  };
-
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  programs.fuse.userAllowOther = true;
-
-  boot.extraModulePackages = [
-    pkgs.linuxPackages.vendor-reset
-  ];
-  boot.supportedFilesystems = ["ntfs"];
-
-  environment.systemPackages = with pkgs; [
-    wayland
-    killall
-    fd
-    btop
-    gparted
-    nix-doc
-    
+  config.mine.virtualization.id_driver_map = [
+    { id = "1002 73ff"; driver = "amdgpu"; } # GPU_VIDEO
+    { id = "1002 ab28"; driver = "snd_hda_intel"; } # GPU_AUDIO
+    { id = "10ec 5765"; driver = "nvme"; } # NVME_1
+    { id = "1e0f 0008"; driver = "nvme"; } # NVME_2
   ];
 
-  # Virtualization
-  boot.kernelParams = ["intel_iommu=on"];
-  # /End/ Virtualization
+  config = {
+    boot.loader.systemd-boot.enable = true;
+    boot.loader.efi.canTouchEfiVariables = true;
 
-  services.gnome.gnome-keyring.enable = true;
-  environment.variables.XDG_RUNTIME_DIR = "/run/user/$UID";
-  programs.seahorse.enable = true;
-  security.polkit.enable = true;
+    programs.fuse.userAllowOther = true;
 
-  programs.hyprland.enable = true;
-  programs.fish.enable = true;
-
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = true;
-  };
-
-  nixpkgs = {
-    overlays = [
+    boot.extraModulePackages = [
+      pkgs.linuxPackages.vendor-reset
     ];
-    config = {
-      allowUnfree = true;
+    boot.supportedFilesystems = ["ntfs"];
+
+    environment.systemPackages = with pkgs; [
+      wayland
+      killall
+      fd
+      btop
+      gparted
+      nix-doc
+      
+    ];
+
+    # Virtualization
+    boot.kernelParams = ["intel_iommu=on"];
+    # /End/ Virtualization
+
+    services.gnome.gnome-keyring.enable = true;
+    environment.variables.XDG_RUNTIME_DIR = "/run/user/$UID";
+    programs.seahorse.enable = true;
+    security.polkit.enable = true;
+
+    programs.hyprland.enable = true;
+    programs.fish.enable = true;
+
+    security.rtkit.enable = true;
+    services.pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      jack.enable = true;
     };
-  };
 
-  nix.settings.experimental-features = "nix-command flakes";
-  nix.registry.nixpkgs.flake = inputs.nixpkgs;
-  nix.channel.enable = false;
-  environment.etc."nix/inputs/nixpkgs".source = "${inputs.nixpkgs}";
-  nix.settings.nix-path = lib.mkForce "nixpkgs=${inputs.nixpkgs}";
-
-  fonts.fontDir.enable = true;
-
-  networking.hostName = "athena";
-  users.users = {
-    liberontissauri = {
-      initialPassword = "password";
-      shell = pkgs.fish;
-      isNormalUser = true;
-      extraGroups = ["wheel"];
+    nixpkgs = {
+      overlays = [
+      ];
+      config = {
+        allowUnfree = true;
+      };
     };
-  };
 
-  system.stateVersion = "24.11";
+    nix.settings.experimental-features = "nix-command flakes";
+    nix.registry.nixpkgs.flake = inputs.nixpkgs;
+    nix.channel.enable = false;
+    environment.etc."nix/inputs/nixpkgs".source = "${inputs.nixpkgs}";
+    nix.settings.nix-path = lib.mkForce "nixpkgs=${inputs.nixpkgs}";
+
+    fonts.fontDir.enable = true;
+
+    networking.hostName = "athena";
+    users.users = {
+      liberontissauri = {
+        initialPassword = "password";
+        shell = pkgs.fish;
+        isNormalUser = true;
+        extraGroups = ["wheel"];
+      };
+    };
+
+    system.stateVersion = "24.11";
+  };
 }

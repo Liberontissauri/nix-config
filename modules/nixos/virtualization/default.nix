@@ -17,7 +17,7 @@ in
       description = "PCI devices to bind to vfio-pci";
     };
     id_driver_map = lib.mkOption {
-      type = lib.types.attrsOf lib.types.str;
+      type = lib.types.listOf (lib.types.attrsOf lib.types.str);
       default = {};
       description = "Map of PCI device IDs to drivers";
     };
@@ -76,9 +76,9 @@ in
     };
 
     systemd.tmpfiles.rules = [
-      "f /dev/shm/looking-glass 0660 ${config.mine.user} qemu-libvirtd -"
+      "f /dev/shm/looking-glass 0660 ${user} qemu-libvirtd -"
     ];
 
-    users.users.${config.mine.user}.extraGroups = ["qemu-libvirtd" "libvirtd" "disk"];
+    users.users.${user}.extraGroups = ["qemu-libvirtd" "libvirtd" "disk"];
   };
 }

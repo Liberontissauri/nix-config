@@ -1,8 +1,12 @@
 {
   lib,
   config,
+  inputs,
   ...
 }: {
+  imports = [
+    inputs.impermanence.nixosModules.default
+  ];
   options.mine.persistence = {
     enable = lib.mkEnableOption "Enable persistence";
   };

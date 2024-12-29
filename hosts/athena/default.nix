@@ -6,8 +6,8 @@
 }: let
   home-manager = inputs.home-manager;
   user = "liberontissauri";
-in {
-  system_configuration = nixpkgs.lib.nixosSystem {
+in
+  nixpkgs.lib.nixosSystem {
     specialArgs = {inherit inputs outputs user;};
     modules = [
       ./configuration.nix
@@ -21,5 +21,4 @@ in {
         home-manager.backupFileExtension = "bk";
       }
     ];
-  };
-}
+  }

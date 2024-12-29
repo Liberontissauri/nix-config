@@ -1,4 +1,5 @@
-{lib, config}: {
+{lib, config, ...}: {
+  options.mine.persistence.enable = lib.mkEnableOption "Enable persistence";
   config = lib.mkIf config.mine.persistence.enable {
     home.persistence."/persist/home/liberontissauri" = {
       directories = [
