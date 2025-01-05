@@ -1,0 +1,22 @@
+{
+    "languages": {
+        "Nix": {
+        "language_servers": [ "nixd", "!nil" ]
+        }
+    },
+    "autosave": {
+        "after_delay": {
+        "milliseconds": 100
+        }
+    },
+    "lsp": {
+        "nixd": {
+            "options": {
+            "nixos": {
+                "expr": "(builtins.getFlake \"/persist/nix-config/flake.nix\").nixosConfigurations.lib-desktop.options"
+            }
+            }
+        
+        }
+    }
+}
