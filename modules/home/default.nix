@@ -5,6 +5,8 @@
   imports = [
     ./hyprland.nix
     ./persistence.nix
+    ./zed
+    ./firefox
     ./waybar/style_1.nix
     ./legacy/fonts.nix
     ./legacy/background

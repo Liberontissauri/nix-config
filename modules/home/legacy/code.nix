@@ -24,9 +24,6 @@
             "nixos" = {
               "expr" = "(builtins.getFlake \"/persist/nix-config/flake.nix\").nixosConfigurations.lib-desktop.options";
             };
-            #"home_manager" = {
-            #  "expr" = "(builtins.getFlake \"/persist/nix-config/home-manager/home.nix\").homeConfigurations.lib-desktop.options";
-            #};
          };
       };
     };
@@ -35,6 +32,7 @@
     pkgs.vscode-extensions.github.github-vscode-theme
     pkgs.vscode-extensions.github.copilot
     pkgs.vscode-extensions.equinusocio.vsc-material-theme-icons
+    pkgs.vscode-extensions.rust-lang.rust-analyzer
   ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
      {
          name = "VSC-Prolog";

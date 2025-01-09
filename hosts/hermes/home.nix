@@ -1,15 +1,11 @@
 {inputs, pkgs, ...}: let
-  impermanence = inputs.impermanence;
-  stylix = inputs.stylix;
+    stylix = inputs.stylix;
 in
 {
   imports = [
-    impermanence.homeManagerModules.impermanence
     stylix.homeManagerModules.stylix
     ../../modules/home
-
   ];
-  config.mine.persistence.enable = true; # VERY IMPORTANT OR ELSE YOU WILL LOSE DATA
   config.mine.hyprland.enable = true;
   config.mine.waybar_style_1.enable = true;
 
@@ -47,7 +43,6 @@ in
       stremio
       vlc
       tidal-hifi
-      darktable
     ];
 
     programs.alacritty.enable = true;

@@ -3,17 +3,17 @@
   options.mine.waybar_style_1.enable = lib.mkEnableOption "Enable waybar style 1";
   options.mine.waybar_style_1.bar_color = lib.mkOption {
     type = lib.types.str;
-    default = "1A1826";
+    default = "00041D";
     description = "Bar color";
   };
   options.mine.waybar_style_1.text_color = lib.mkOption {
     type = lib.types.str;
-    default = "ffffff";
+    default = "F9F9FB";
     description = "Text color";
   };
   options.mine.waybar_style_1.highlight_color = lib.mkOption {
     type = lib.types.str;
-    default = "ffffff";
+    default = "87D2EF";
     description = "Highlights color";
   };
   

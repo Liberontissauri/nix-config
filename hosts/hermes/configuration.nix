@@ -2,35 +2,15 @@
 
 {
   imports = [
+    inputs.nixos-apple-silicon
     ../../modules/nixos/default.nix
     ./hardware-configuration.nix
   ];
-
-  config.mine.disko.enable = true;
-  config.mine.disko.device = "/dev/sda";
-  config.mine.persistence.enable = true;
-  config.mine.virtualization.enable = true;
-
-  config.mine.virtualization.slot_id_driver_map = [
-    {slot="0000:09:00.0"; id = "1002 73ff"; driver = "amdgpu"; } # GPU_VIDEO
-    { slot="0000:09:00.1" ;id = "1002 ab28"; driver = "snd_hda_intel"; } # GPU_AUDIO
-    { slot="0000:04:00.0" ;id = "10ec 5765"; driver = "nvme"; } # NVME_1
-    { slot="0000:05:00.0" ;id = "1e0f 0008"; driver = "nvme"; } # NVME_2
-  ];
-
-  config.mine.virtualization.mouse_edev = "usb-Razer_Razer_DeathAdder_2013-mouse";
-  config.mine.virtualization.keyboard_edev = "usb-SEMITEK_USB-HID_Gaming_Keyboard_SN0000000001-event-kbd";
-
   config = {
     boot.loader.systemd-boot.enable = true;
-    boot.loader.efi.canTouchEfiVariables = true;
+    boot.loader.efi.canTouchEfiVariables = false;
 
     programs.fuse.userAllowOther = true;
-
-    boot.extraModulePackages = [
-      pkgs.linuxPackages.vendor-reset
-    ];
-    boot.supportedFilesystems = ["ntfs"];
 
     environment.systemPackages = with pkgs; [
       wayland
@@ -44,11 +24,6 @@
     programs.thunar.enable = true;
     services.gvfs.enable = true; # Mount, trash, and other functionalities
     services.tumbler.enable = true; # Thumbnail support for images
-    
-
-    # Virtualization
-    boot.kernelParams = ["intel_iommu=on"];
-    # /End/ Virtualization
 
     services.gnome.gnome-keyring.enable = true;
     environment.variables.XDG_RUNTIME_DIR = "/run/user/$UID";
@@ -83,7 +58,8 @@
 
     fonts.fontDir.enable = true;
 
-    networking.hostName = "athena";
+    networking.hostName = "hermes";
+    networking.networkmanager.enable = true;
     users.users = {
       liberontissauri = {
         initialPassword = "password";

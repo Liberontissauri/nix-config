@@ -30,6 +30,13 @@
     nvim-config = {
       url = "github:Liberontissauri/nix-nvim-config";
     };
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+    };
+    foxglove = {
+      url = "github:Liberontissauri/Foxglove-Nix-Flake";
+    };
+    nixos-apple-silicon.url = "github:tpwrules/nixos-apple-silicon";
   };
 
   outputs = {
@@ -41,6 +48,9 @@
   in {
     nixosConfigurations = {
       "athena" = import ./hosts/athena/default.nix {
+        inherit nixpkgs inputs outputs;
+      };
+      "hermes" = import ./hosts/hermes/default.nix {
         inherit nixpkgs inputs outputs;
       };
     };

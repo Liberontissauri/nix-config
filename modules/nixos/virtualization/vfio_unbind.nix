@@ -1,19 +1,18 @@
 {
   lib,
-  pci_to_unbind,
-  id_driver_map,
+  slot_id_driver_map,
 }:
 let
-  unbindDevice = device: ''
-    echo "${device}" > /sys/bus/pci/devices/${device}/driver/unbind
+  unbindDevice = { slot, id, driver }: ''
+    echo "${slot}" > /sys/bus/pci/devices/${slot}/driver/unbind
   '';
-  bindDevice = { id, driver }: ''
-    echo "${id}" > /sys/bus/pci/driver/${driver}/bind
+  bindDevice = { slot, id, driver }: '' # THIS IS WRONG, IT SHOULD USE THE PCI SLOT
+    echo "${slot}" > /sys/bus/pci/drivers/${driver}/bind
   '';
 in
 ''
   #!/bin/bash
   
-  ${lib.concatStringsSep "\n" (map unbindDevice pci_to_unbind)}
-  ${lib.concatStringsSep "\n" (map bindDevice id_driver_map)}
+  ${lib.concatStringsSep "\n" (map unbindDevice slot_id_driver_map)}
+  ${lib.concatStringsSep "\n" (map bindDevice slot_id_driver_map)}
 ''

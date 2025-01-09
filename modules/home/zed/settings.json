@@ -1,12 +1,25 @@
 {
-    "languages": {
-        "Nix": {
-        "language_servers": [ "nixd", "!nil" ]
-        }
+    "assistant": {
+        "default_model": {
+            "provider": "copilot_chat",
+            "model": "gpt-4o"
+        },
+        "version": "2"
     },
+    "auto_install_extensions": {
+      "one-black-theme": true
+    },
+    "theme": "One Black",
     "autosave": {
         "after_delay": {
         "milliseconds": 100
+        }
+    },
+    "buffer_font_size": 20,
+    "ui_font_size": 17,
+    "languages": {
+        "Nix": {
+        "language_servers": [ "nixd", "!nil" ]
         }
     },
     "lsp": {

@@ -6,7 +6,9 @@
 */
 
 /* Just comment the lines or blocks for the elements you WANT to see */
-
+#tabbrowser-tabs {
+    visibility: collapse !important;
+} 
 /* Menu button */
 #PanelUI-button {
   -moz-box-ordinal-group: 0 !important;

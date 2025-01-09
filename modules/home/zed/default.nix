@@ -9,6 +9,6 @@
     home.packages = with pkgs; [
       zed-editor
     ];
-    home.file.".config/zed/settings.json".source = config.lib.mkOutOfStoreSymlink ./settings.json;
+    home.file.".config/zed/settings.json".source = config.lib.file.mkOutOfStoreSymlink /persist/nix-config/modules/home/zed/settings.json;
   };
 }
