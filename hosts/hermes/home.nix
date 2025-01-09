@@ -4,7 +4,7 @@ in
 {
   imports = [
     stylix.homeManagerModules.stylix
-    ../../modules/home
+    ../../modules/home/no_persist.nix
   ];
   config.mine.hyprland.enable = true;
   config.mine.waybar_style_1.enable = true;
