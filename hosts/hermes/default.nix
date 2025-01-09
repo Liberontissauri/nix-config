@@ -8,6 +8,7 @@
   user = "liberontissauri";
 in
   nixpkgs.lib.nixosSystem {
+    system = "aarch64-linux";
     specialArgs = {inherit inputs outputs user;};
     modules = [
       ./configuration.nix

@@ -2,9 +2,9 @@
 
 {
   imports = [
-    inputs.nixos-apple-silicon
+    (inputs.nixos-apple-silicon + "/apple-silicon-support")
     ../../modules/nixos/default.nix
-    ./hardware-configuration.nix
+    #./hardware-configuration.nix
   ];
   config = {
     boot.loader.systemd-boot.enable = true;
