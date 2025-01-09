@@ -4,11 +4,12 @@
   imports = [
     (inputs.nixos-apple-silicon + "/apple-silicon-support")
     ../../modules/nixos/default.nix
-    #./hardware-configuration.nix
+    ./hardware-configuration.nix
   ];
   config = {
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = false;
+    hardware.asahi.peripheralFirmwareDirectory = ./firmware;
 
     programs.fuse.userAllowOther = true;
 
@@ -59,7 +60,10 @@
     fonts.fontDir.enable = true;
 
     networking.hostName = "hermes";
-    networking.networkmanager.enable = true;
+    networking.wireless.iwd = {
+      enable = true;
+      settings.Generatl.EnableNetworkConfiguration = true;
+    };
     users.users = {
       liberontissauri = {
         initialPassword = "password";
