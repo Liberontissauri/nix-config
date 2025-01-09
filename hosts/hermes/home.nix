@@ -31,7 +31,7 @@ in
       wget
       swaybg
       waybar
-      discord-canary
+      vencord
       bitwarden-desktop
       obsidian
       deluge
