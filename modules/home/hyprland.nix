@@ -9,9 +9,9 @@
     wayland.windowManager.hyprland = {
       enable = true;
       extraConfig = ''
-        env = AQ_DRM_DEVICES,/dev/dri/card1
+        #env = AQ_DRM_DEVICES,/dev/dri/card1
 
-        monitor=,2560x1440@75,auto,1
+        monitor=,2560x1440@120,auto,1
 
         exec-once = swaybg -m fill -i ~/.config/background.png & waybar
 

@@ -37,6 +37,7 @@
       url = "github:Liberontissauri/Foxglove-Nix-Flake";
     };
     nixos-apple-silicon.url = "github:tpwrules/nixos-apple-silicon";
+    nixos-apple-silicon.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {

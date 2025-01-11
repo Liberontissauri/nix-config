@@ -10,7 +10,7 @@ in
   config.mine.waybar_style_1.enable = true;
 
   config.mine.zed.enable = true;
-  config.mine.firefox.enable = true;
+  #config.mine.firefox.enable = false;
 
   config = {
     nixpkgs = {

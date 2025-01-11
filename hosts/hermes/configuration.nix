@@ -10,7 +10,8 @@
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = false;
     hardware.asahi.peripheralFirmwareDirectory = ./firmware;
-
+    hardware.asahi.experimentalGPUInstallMode = "replace";
+    hardware.asahi.useExperimentalGPUDriver = true;
     programs.fuse.userAllowOther = true;
 
     environment.systemPackages = with pkgs; [
@@ -20,6 +21,8 @@
       btop
       gparted
       nix-doc
+      mesa
+      mesa.drivers
     ];
 
     programs.thunar.enable = true;
@@ -45,6 +48,7 @@
 
     nixpkgs = {
       overlays = [
+        inputs.nixos-apple-silicon.overlays.apple-silicon-overlay
       ];
       config = {
         allowUnfree = true;
