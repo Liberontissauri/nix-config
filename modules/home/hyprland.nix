@@ -2,11 +2,35 @@
 let
   hyprlandExtraConfig = {
     desktop = ''
-    env = AQ_DRM_DEVICES,/dev/dri/card1
-    monitor=,2560x1440@75,auto,1
+      env = AQ_DRM_DEVICES,/dev/dri/card1
+      monitor=,2560x1440@75,auto,1
+      
+      input {
+          kb_layout = us
+
+          follow_mouse = 1
+
+          touchpad {
+              natural_scroll = false
+          }
+          accel_profile = adaptive
+          sensitivity = -0.4 # -1.0 - 1.0, 0 means no modification.
+      }
     '';
     asahi = ''
-    monitor=,2560x1440@120,auto,1
+      monitor=,2560x1440@120,auto,1
+      
+      input {
+          kb_layout = pt
+
+          follow_mouse = 1
+
+          touchpad {
+              natural_scroll = true
+          }
+          accel_profile = adaptive
+          sensitivity = 0
+      }
     '';
   };
 in
@@ -36,18 +60,6 @@ in
         env = XCURSOR_SIZE,24
         env = QT_QPA_PLATFORMTHEME,qt5ct # change to qt6ct if you have that
         env = GDK_BACKEND,wayland,x11,*
-
-        input {
-            kb_layout = us
-
-            follow_mouse = 1
-
-            touchpad {
-                natural_scroll = false
-            }
-            accel_profile = adaptive
-            sensitivity = -0.4 # -1.0 - 1.0, 0 means no modification.
-        }
 
         general {
             gaps_in = 5
