@@ -7,10 +7,11 @@ in
     ../../modules/home/no_persist.nix
   ];
   config.mine.hyprland.enable = true;
+  config.mine.hyprland.system = "asahi";
   config.mine.waybar_style_1.enable = true;
 
   config.mine.zed.enable = true;
-  #config.mine.firefox.enable = false;
+  config.mine.firefox.enable = false;
 
   config = {
     nixpkgs = {

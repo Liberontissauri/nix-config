@@ -1,5 +1,22 @@
-{lib, config, ...}: {
+{lib, config, ...}: 
+let
+  hyprlandExtraConfig = {
+    desktop = ''
+    env = AQ_DRM_DEVICES,/dev/dri/card1
+    monitor=,2560x1440@75,auto,1
+    '';
+    asahi = ''
+    monitor=,2560x1440@120,auto,1
+    '';
+  };
+in
+{
   options.mine.hyprland.enable = lib.mkEnableOption "Enable hyprland";
+  options.mine.hyprland.system = lib.mkOption {
+    type = lib.types.str;
+    default = "desktop";
+    description = "System type for hyprland. \"desktop\" or \"asahi\"";
+  };
   options.mine.hyprland.accent_color = lib.mkOption {
     type = lib.types.str;
     default = "1A1826";
@@ -9,9 +26,7 @@
     wayland.windowManager.hyprland = {
       enable = true;
       extraConfig = ''
-        #env = AQ_DRM_DEVICES,/dev/dri/card1
-
-        monitor=,2560x1440@120,auto,1
+        ${hyprlandExtraConfig.${config.mine.hyprland.system}}
 
         exec-once = swaybg -m fill -i ~/.config/background.png & waybar
 

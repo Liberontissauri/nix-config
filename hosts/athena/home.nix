@@ -11,6 +11,7 @@ in
   ];
   config.mine.persistence.enable = true; # VERY IMPORTANT OR ELSE YOU WILL LOSE DATA
   config.mine.hyprland.enable = true;
+  config.mine.hyprland.system = "desktop";
   config.mine.waybar_style_1.enable = true;
 
   config.mine.zed.enable = true;

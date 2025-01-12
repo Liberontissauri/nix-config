@@ -11,7 +11,6 @@
     ./legacy/fonts.nix
     ./legacy/background
     ./legacy/themes/blue-sky.nix
-    ./legacy/firefox.nix
     ./legacy/fastfetch.nix
     ./legacy/helper.nix
     ./legacy/nvim.nix
