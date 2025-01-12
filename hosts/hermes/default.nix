@@ -14,12 +14,12 @@ in
       ./configuration.nix
       home-manager.nixosModules.home-manager
       {
+	home-manager.backupFileExtension = "backup";
         home-manager.useUserPackages = true;
         home-manager.users.liberontissauri.imports = [
           ./home.nix
         ];
         home-manager.extraSpecialArgs = {inherit inputs outputs user;};
-        home-manager.backupFileExtension = "bk";
       }
     ];
   }
