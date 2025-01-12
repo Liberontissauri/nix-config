@@ -18,17 +18,17 @@ let
       }
     '';
     asahi = ''
-      monitor=,2560x1440@120,auto,1
+      monitor=,2560x1440@120,auto,1.333
       
       input {
           kb_layout = pt
+	  kb_variant = mac
 
           follow_mouse = 1
 
           touchpad {
               natural_scroll = true
           }
-          accel_profile = adaptive
           sensitivity = 0
       }
     '';

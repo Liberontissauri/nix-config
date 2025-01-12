@@ -14,7 +14,7 @@ in
       ./configuration.nix
       home-manager.nixosModules.home-manager
       {
-	home-manager.backupFileExtension = "backup";
+	home-manager.backupFileExtension = "backup3";
         home-manager.useUserPackages = true;
         home-manager.users.liberontissauri.imports = [
           ./home.nix
