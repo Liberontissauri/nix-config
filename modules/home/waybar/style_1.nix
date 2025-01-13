@@ -45,10 +45,10 @@
         
         "network"= {
             format = "{icon}";
-            format-alt = "{ipaddr}/{cidr} {icon}";
+            format-alt = "{ipaddr}/{cidr} ({signalStrength}%)";
             format-alt-click = "click-right";
-            format-wifi = " {essid} ({signalStrength}%)";
-            format-ethernet = " {ifname}";
+            format-wifi = " {essid} ";
+            format-ethernet = " Ethernet";
             format-disconnected = "⚠ Disconnected";
             tooltip = false;
         };
@@ -98,7 +98,27 @@
         padding-right: 10px;
         border-radius: 10px;
         transition: none;
-        color: #ffffff;;
+        color: #ffffff;
+        /*background: #1A1826;*/
+      }
+      #network {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-left: 15px;
+        margin-right: 8px;
+        padding-left: 10px;
+        padding-right: 30px;
+        border-radius: 10px;
+        transition: none;
+        color: #ffffff;
+        /*background: #1A1826;*/
+      }
+      #battery {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border-radius: 10px;
+        transition: none;
+        color: #ffffff;
         /*background: #1A1826;*/
       }
     '';
