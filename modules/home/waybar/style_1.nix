@@ -16,6 +16,8 @@
     default = "87D2EF";
     description = "Highlights color";
   };
+  options.mine.waybar_style_1.battery.enable = lib.mkEnableOption "Enable battery modules";
+  options.mine.waybar_style_1.network.enable = lib.mkEnableOption "Enable network modules"; # Not working yet
   
   config = lib.mkIf config.mine.waybar_style_1.enable {
     programs.waybar.enable = true;
@@ -26,7 +28,9 @@
 
         modules-left = ["clock" "hyprland/workspaces"];
         modules-center = [];
-        modules-right = [];
+        modules-right = [
+          lib.mkIf config.mine.waybar_style_1.battery.enable "battery"
+        ];
 
         "hyprland/workspaces" = {
           format = "{icon}";
@@ -116,6 +120,8 @@
       #battery {
         margin-top: 10px;
         margin-bottom: 10px;
+        margin-left: 15px;
+        margin-right: 8px;
         border-radius: 10px;
         transition: none;
         color: #ffffff;
