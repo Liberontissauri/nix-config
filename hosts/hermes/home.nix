@@ -9,8 +9,7 @@ in
   config.mine.hyprland.enable = true;
   config.mine.hyprland.system = "asahi";
   config.mine.waybar_style_1.enable = true;
-  config.mine.waybar_style_1.battery.enable = true;
-  config.mine.waybar_style_1.network.enable = true;
+  config.mine.waybar_style_1.system = "asahi"
 
   config.mine.zed.enable = true;
   config.mine.firefox.enable = false;

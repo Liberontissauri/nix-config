@@ -1,6 +1,17 @@
 {lib, config, pkgs, ...}:
+let
+    waybarModulesConfig = {
+    desktop = [];
+    asahi = ["battery"];
+    };
+in
 {
   options.mine.waybar_style_1.enable = lib.mkEnableOption "Enable waybar style 1";
+  options.mine.waybar_style_1.system = lib.mkOption {
+    type = lib.types.str;
+    default = "desktop";
+    description = "System type for waybar. \"desktop\" or \"asahi\"";
+  };
   options.mine.waybar_style_1.bar_color = lib.mkOption {
     type = lib.types.str;
     default = "00041D";
@@ -28,9 +39,7 @@
 
         modules-left = ["clock" "hyprland/workspaces"];
         modules-center = [];
-        modules-right = [
-          if config.mine.waybar_style_1.battery.enable then "battery"
-        ];
+        modules-right = waybarModulesConfig.${config.mine.waybar_style_1.system};
 
         "hyprland/workspaces" = {
           format = "{icon}";
