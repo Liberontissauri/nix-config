@@ -29,7 +29,7 @@
         modules-left = ["clock" "hyprland/workspaces"];
         modules-center = [];
         modules-right = [
-          lib.mkIf config.mine.waybar_style_1.battery.enable "battery"
+          if config.mine.waybar_style_1.battery.enable then "battery"
         ];
 
         "hyprland/workspaces" = {
