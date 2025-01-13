@@ -36,13 +36,21 @@
           };
         };
 
-        "custom/hello-from-waybar" = {
-          format = "hello {}";
-          max-length = 40;
-          interval = "once";
-          exec = pkgs.writeShellScript "hello-from-waybar" ''
-            echo "from within waybar"
-          '';
+        "battery" = {
+          format = "{icon} {capacity}%";
+          interval = "20";
+          format-icons = ["" "" "" ""];
+          formate-charging="󱐋 {capacity}%";
+        };
+        
+        "network"= {
+            format = "{icon}";
+            format-alt = "{ipaddr}/{cidr} {icon}";
+            format-alt-click = "click-right";
+            format-wifi = " {essid} ({signalStrength}%)";
+            format-ethernet = " {ifname}";
+            format-disconnected = "⚠ Disconnected";
+            tooltip = false;
         };
       };
     };
