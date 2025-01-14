@@ -32,7 +32,7 @@ in
     
     home.packages = with pkgs; 
     let
-    bitwarden-desktop-wayland = pkgs.bitwarden-desktop.override {
+    bitwarden-desktop-wayland = bitwarden-desktop.override {
       commandLineArgs = [
                   # Correct fractional scaling.
                   "--ozone-platform-hint=wayland"
