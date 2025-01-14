@@ -17,7 +17,11 @@ in
   config = {
     nixpkgs = {
       overlays = [
-        pkgs.bitwarden-desktop 
+        (final: prev: {
+          bitwarden-desktop-wayland = prev.bitwarden-desktop.override {
+               commandLineArgs ="--ozone-platform-hint=wayland";
+             };
+        })
       ];
       config = {
         allowUnfree = true;
@@ -31,14 +35,6 @@ in
     };
     
     home.packages = with pkgs; 
-    let
-    bitwarden-desktop-wayland = bitwarden-desktop.override {
-      commandLineArgs = [
-                  # Correct fractional scaling.
-                  "--ozone-platform-hint=wayland"
-                ];
-    };
-    in
     [
       wget
       swaybg
