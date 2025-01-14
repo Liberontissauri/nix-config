@@ -34,7 +34,12 @@ in
       swaybg
       waybar
       vencord
-      bitwarden-desktop
+      bitwarden-desktop.override {
+        commandLineArgs = [
+                    # Correct fractional scaling.
+                    "--ozone-platform-hint=wayland"
+                  ];
+      }
       obsidian
       deluge
       nerdfetch
