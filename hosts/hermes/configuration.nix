@@ -13,6 +13,8 @@
     hardware.asahi.experimentalGPUInstallMode = "replace";
     hardware.asahi.useExperimentalGPUDriver = true;
     programs.fuse.userAllowOther = true;
+    
+    environment.sessionVariables.NIXOS_OZONE_WL = "1"; # HOW IS THIS NO DOCUMENTED
 
     environment.systemPackages = with pkgs; [
       wayland
