@@ -20,7 +20,7 @@
 
   config.mine.virtualization.mouse_edev = "usb-Razer_Razer_DeathAdder_2013-mouse";
   config.mine.virtualization.keyboard_edev = "usb-SEMITEK_USB-HID_Gaming_Keyboard_SN0000000001-event-kbd";
-
+  
   config = {
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
@@ -39,6 +39,7 @@
       btop
       gparted
       nix-doc
+      docker-compose
     ];
 
     programs.thunar.enable = true;
@@ -46,6 +47,17 @@
     services.tumbler.enable = true; # Thumbnail support for images
     
 
+    virtualisation.docker.enable = true;
+    virtualisation.docker.storageDriver = "btrfs";
+    virtualisation.docker.rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
+    virtualisation.docker.daemon.settings = {
+      data-root = "/home/liberontissauri/.local/share/docker_data";
+    };
+
+    
     # Virtualization
     boot.kernelParams = ["intel_iommu=on"];
     # /End/ Virtualization
@@ -89,7 +101,7 @@
         initialPassword = "password";
         shell = pkgs.fish;
         isNormalUser = true;
-        extraGroups = ["wheel"];
+        extraGroups = ["wheel" "docker"];
       };
     };
 

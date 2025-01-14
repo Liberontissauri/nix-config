@@ -9,7 +9,7 @@
     "auto_install_extensions": {
       "one-black-theme": true
     },
-    "theme": "One Black",
+    "theme": "One Dark",
     "autosave": {
         "after_delay": {
         "milliseconds": 100
