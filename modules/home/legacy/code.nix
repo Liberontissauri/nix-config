@@ -28,6 +28,12 @@
       };
     };
   };
+  programs.vscode.package = pkgs.vscode.override {
+    commandLineArgs = [
+                # Correct fractional scaling.
+                "--ozone-platform-hint=wayland"
+              ];
+  };
   programs.vscode.extensions = [
     pkgs.vscode-extensions.github.github-vscode-theme
     pkgs.vscode-extensions.github.copilot
