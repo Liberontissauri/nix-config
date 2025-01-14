@@ -18,7 +18,7 @@ in
     nixpkgs = {
       overlays = [
         (final: prev: {
-          bitwarden-desktop-wayland = prev.bitwarden-desktop.override {
+          bitwarden-desktop = prev.bitwarden-desktop.override {
                commandLineArgs ="--ozone-platform-hint=wayland";
              };
         })
