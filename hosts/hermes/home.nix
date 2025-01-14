@@ -17,6 +17,7 @@ in
   config = {
     nixpkgs = {
       overlays = [
+        pkgs.bitwarden-desktop 
       ];
       config = {
         allowUnfree = true;
@@ -29,17 +30,21 @@ in
       homeDirectory = "/home/liberontissauri";
     };
     
-    home.packages = with pkgs; [
+    home.packages = with pkgs; 
+    let
+    bitwarden-desktop-wayland = pkgs.bitwarden-desktop.override {
+      commandLineArgs = [
+                  # Correct fractional scaling.
+                  "--ozone-platform-hint=wayland"
+                ];
+    };
+    in
+    [
       wget
       swaybg
       waybar
       vencord
-      bitwarden-desktop.override {
-        commandLineArgs = [
-                    # Correct fractional scaling.
-                    "--ozone-platform-hint=wayland"
-                  ];
-      }
+      bitwarden-desktop-wayland
       obsidian
       deluge
       nerdfetch
