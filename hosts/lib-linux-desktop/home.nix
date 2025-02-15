@@ -16,6 +16,8 @@ in
 
   config.mine.firefox.enable = true;
 
+  config.mine.nvim.enable = true;
+
   config = {
     nixpkgs = {
       overlays = [
@@ -54,6 +56,7 @@ in
       renderdoc
       neovim
       unzip
+      remmina
     ];
 
     programs.alacritty.enable = true;

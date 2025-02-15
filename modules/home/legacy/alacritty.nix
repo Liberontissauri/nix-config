@@ -19,8 +19,8 @@
     window = {
       dynamic_padding = true;
       padding = {
-      x = 25;
-      y = 25;
+      x = 0;
+      y = 0;
       };
     };
     colors = {

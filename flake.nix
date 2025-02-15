@@ -27,9 +27,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nvim-config = {
-      url = "github:Liberontissauri/nix-nvim-config";
-    };
     ghostty = {
       url = "github:ghostty-org/ghostty";
     };
@@ -48,7 +45,7 @@
     inherit (self) outputs;
   in {
     nixosConfigurations = {
-      "athena" = import ./hosts/athena/default.nix {
+      "lib-linux-desktop" = import ./hosts/lib-linux-desktop/default.nix {
         inherit nixpkgs inputs outputs;
       };
       "hermes" = import ./hosts/hermes/default.nix {

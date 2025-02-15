@@ -11,6 +11,7 @@
             darkreader
             sidebery
             simple-translate
+            
           ];
     settings = {
       "extensions.autoDisableScopes" = 0;

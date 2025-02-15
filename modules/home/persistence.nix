@@ -27,6 +27,10 @@
         ".config/obsidian"
         ".config/stremio"
         ".config/tidal-hifi"
+        ".config/unity3d"
+        "Unity"
+        ".config/JetBrains"
+        "/var/lib/zerotier-one"
       ];
       files = [
         ".screenrc"

@@ -10,7 +10,7 @@
   programs.vscode.enable = true;
   programs.vscode.userSettings = {
     "files.autoSave" = "afterDelay";
-    "workbench.colorTheme" = "GitHub Dark Colorblind (Beta)";
+    "workbench.colorTheme" = "Atom Just Black";
     "workbench.iconTheme" = "eq-material-theme-icons";
     "prolog.executablePath" = "/etc/profiles/per-user/liberontissauri/bin/swipl";
     "nix.serverPath" = "nixd";
@@ -39,7 +39,16 @@
     pkgs.vscode-extensions.github.copilot
     pkgs.vscode-extensions.equinusocio.vsc-material-theme-icons
     pkgs.vscode-extensions.rust-lang.rust-analyzer
+    pkgs.vscode-extensions.ms-vscode-remote.remote-containers
+    pkgs.vscode-extensions.ms-dotnettools.csharp
+    pkgs.vscode-extensions.ms-dotnettools.vscode-dotnet-runtime
   ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+     {
+      name = "vstuc";
+      publisher = "VisualStudioToolsForUnity";
+      version = "1.0.5";
+      sha256 = "sha256-7v/f9oo+zjQ3EaVhYfswhy3Sqw3U+v53o50SvMRngFc=";
+     }
      {
          name = "VSC-Prolog";
          publisher = "arthurwang";
@@ -57,6 +66,12 @@
         publisher = "jnoortheen";
         version = "0.3.5";
         sha256="sha256-hiyFZVsZkxpc2Kh0zi3NGwA/FUbetAS9khWxYesxT4s=";
+     }
+     {
+        name = "atom-just-black";
+        publisher = "dereckdamphouse";
+        version = "1.0.6";
+        sha256="sha256-Vex8Rn5KL3UNbSsyaFiQux54T8NzTfHCxMfOScax4G4=";
      }
  ];
   home.file.".vscode/argv.json".text = ''

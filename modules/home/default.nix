@@ -13,6 +13,6 @@
     ./legacy/themes/blue-sky.nix
     ./legacy/fastfetch.nix
     ./legacy/helper.nix
-    ./legacy/nvim.nix
+    ./nvim
   ];
 }
