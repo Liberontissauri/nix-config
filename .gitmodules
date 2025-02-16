@@ -1,0 +1,3 @@
+[submodule "modules/home/nvim/nvim"]
+	path = modules/home/nvim/nvim
+	url = https://github.com/Liberontissauri/neo-dots.git
