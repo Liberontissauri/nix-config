@@ -8,9 +8,10 @@
     ./zed
     ./firefox
     ./waybar/style_1.nix
+    ./legacy/themes/blue-sky.nix
+    ./ghostty
     ./legacy/fonts.nix
     ./legacy/background
-    ./legacy/themes/blue-sky.nix
     ./legacy/fastfetch.nix
     ./legacy/helper.nix
     ./nvim

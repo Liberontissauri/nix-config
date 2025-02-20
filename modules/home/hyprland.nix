@@ -148,7 +148,7 @@ in
 
         exec-once = swaybg -m fill -i ~/.config/background.png & waybar
 
-        $terminal = alacritty
+        $terminal = ghostty
         $fileManager = thunar
 
         env = XCURSOR_SIZE,24

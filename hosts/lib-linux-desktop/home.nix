@@ -17,6 +17,7 @@ in
   config.mine.firefox.enable = true;
 
   config.mine.nvim.enable = true;
+  config.mine.ghostty.enable = true;
 
   config = {
     nixpkgs = {
@@ -57,6 +58,10 @@ in
       neovim
       unzip
       remmina
+      lua-language-server
+      omnisharp-roslyn
+      clang-tools
+      json_c
     ];
 
     programs.alacritty.enable = true;
